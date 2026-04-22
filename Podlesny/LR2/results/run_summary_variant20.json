@@ -1,0 +1,25 @@
+{
+  "variant": 20,
+  "topic": "Специалист по гибридным системам",
+  "dataset_size": 68,
+  "train_size": 57,
+  "validation_size": 11,
+  "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "max_seq_length": 512,
+  "epochs": 6,
+  "batch_size": 1,
+  "gradient_accumulation_steps": 8,
+  "learning_rate": 0.0002,
+  "training_time_sec": 268.42237734794617,
+  "validation_loss": 2.127708911895752,
+  "adapter_size_bytes": 20177442,
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "lora_dropout": 0.05,
+  "target_modules": [
+    "k_proj",
+    "o_proj",
+    "q_proj",
+    "v_proj"
+  ]
+}

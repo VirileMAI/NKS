@@ -1,0 +1,16 @@
+{
+  "topic": "AI ethics",
+  "num_samples": 200,
+  "total_chars": 705673,
+  "model_used": "google/flan-t5-small",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Ethics_of_artificial_intelligence",
+    "https://en.wikipedia.org/wiki/Algorithmic_bias",
+    "https://en.wikipedia.org/wiki/Explainable_artificial_intelligence",
+    "https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)",
+    "https://en.wikipedia.org/wiki/Artificial_intelligence_in_healthcare",
+    "https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence",
+    "https://en.wikipedia.org/wiki/Fairness_(machine_learning)",
+    "https://en.wikipedia.org/wiki/AI_safety"
+  ]
+}

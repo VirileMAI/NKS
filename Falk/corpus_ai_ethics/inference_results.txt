@@ -1,0 +1,21 @@
+Topic: AI ethics
+Model: google/flan-t5-small
+
+Prompt: What is AI ethics?
+Result: Artificial intelligence (AI) is an artificial intelligence (AI) technology.
+
+Prompt: What is bias in artificial intelligence?
+Result: bias in artificial intelligence
+
+Prompt: Why is fairness important in machine learning?
+Result: fairness is important in machine learning
+
+Prompt: What are hallucinations in language models?
+Result: hallucinations
+
+Prompt: Why is explainability important in AI systems?
+Result: explainability is important in AI systems
+
+Prompt: What are the main challenges of AI regulation?
+Result: Artificial Intelligence and Artificial Intelligence
+

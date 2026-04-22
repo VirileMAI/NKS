@@ -1,0 +1,18 @@
+{
+  "variant": 5,
+  "topic": "Тьютор по LSTM и управлению памятью",
+  "keywords": [
+    "LSTM",
+    "forget gate",
+    "input gate",
+    "long-term dependencies",
+    "gradient flow"
+  ],
+  "model": "ai-forever/rugpt3small_based_on_gpt2",
+  "num_sources": 6,
+  "total_chars": 50016,
+  "num_chunks": 20,
+  "max_length": 512,
+  "chunk_size_words": 400,
+  "chunk_overlap_words": 50
+}

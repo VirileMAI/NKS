@@ -1,0 +1,14 @@
+{
+  "variant": 20,
+  "topic": "Специалист по гибридным системам",
+  "num_samples": 68,
+  "total_chars": 234306,
+  "model_used": "ai-forever/rugpt3small_based_on_gpt2",
+  "sources": [
+    "https://spectrum.ieee.org/million-dollar-netflix-prize-won",
+    "https://en.wikipedia.org/wiki/Recommender_system",
+    "https://en.wikipedia.org/wiki/Netflix_Prize",
+    "https://en.wikipedia.org/wiki/Collaborative_filtering",
+    "https://en.wikipedia.org/wiki/Content-based_filtering"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "variant": 17,
+  "topic": "Sentiment Analysis",
+  "num_samples": 72,
+  "total_chars": 139171,
+  "model_used": "cointegrated/rubert-tiny-sentiment-balanced",
+  "sources": [
+    "https://habr.com/ru/companies/otus/articles/724234/",
+    "https://habr.com/ru/articles/881998/",
+    "https://en.wikipedia.org/wiki/Sentiment_analysis",
+    "https://en.wikipedia.org/wiki/Emotion_classification",
+    "https://huggingface.co/tasks/text-classification"
+  ]
+}

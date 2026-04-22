@@ -1,0 +1,18 @@
+{
+  "topic": "Siamese networks",
+  "num_samples": 107,
+  "total_chars": 372050,
+  "model_used": "google/flan-t5-small",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Siamese_neural_network",
+    "https://en.wikipedia.org/wiki/One-shot_learning",
+    "https://en.wikipedia.org/wiki/Triplet_loss",
+    "https://en.wikipedia.org/wiki/Face_recognition_system",
+    "https://en.wikipedia.org/wiki/Metric_learning",
+    "https://en.wikipedia.org/wiki/Similarity_learning",
+    "https://en.wikipedia.org/wiki/Convolutional_neural_network",
+    "https://en.wikipedia.org/wiki/Recurrent_neural_network",
+    "https://en.wikipedia.org/wiki/Deep_learning",
+    "https://en.wikipedia.org/wiki/Feature_extraction"
+  ]
+}

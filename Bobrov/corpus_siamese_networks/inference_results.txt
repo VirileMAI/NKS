@@ -1,0 +1,21 @@
+Topic: Siamese networks
+Model: google/flan-t5-small
+
+Prompt: What is a siamese network?
+Result: syamese network
+
+Prompt: What is contrastive loss?
+Result: contrastive loss
+
+Prompt: What is triplet loss?
+Result: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+Prompt: How are siamese networks used in face verification?
+Result: siamese networks are used in face verification
+
+Prompt: What is the difference between contrastive loss and triplet loss?
+Result: contrastive loss
+
+Prompt: Why are siamese networks useful for similarity learning?
+Result: similarity learning
+

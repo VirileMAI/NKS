@@ -1,0 +1,40 @@
+# Виртуальное окружение Python
+venv/
+env/
+.venv/
+
+# Кеш Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Файлы IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Логи
+*.log
+
+# Веса модели (слишком большие для Git)
+*.bin
+*.safetensors
+my_finetuned_model_lab3/
+
+# Но НЕ игнорируем конфиги модели
+!config.json
+!tokenizer.json
+!tokenizer_config.json
+!vocab.json
+!merges.txt
+!special_tokens_map.json

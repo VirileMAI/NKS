@@ -1,0 +1,230 @@
+<!-- static/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НКС Чат | Лабораторная работа №3</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 { color: #333; -align: center; }
+        #chat-window {
+            height: 500px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #fff;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 75%;
+            clear: both;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background-color: #007aff;
+            color: white;
+            float: right;
+            -align: right;
+            border-bottom-right-radius: 5px;
+        }
+        .bot-message {
+            background-color: #e5e5ea;
+            color: black;
+            float: left;
+            -align: left;
+            border-bottom-left-radius: 5px;
+        }
+        .message strong {
+            font-size: 0.8em;
+            opacity: 0.7;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+        #message-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 1em;
+            outline: none;
+        }
+        #message-input:focus {
+            border-color: #007aff;
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #007aff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+        .status {
+            -align: center;
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🤖 Консультант по Нейрокомпьютерным системам</h1>
+    <p style="-align:center; color:#555;">Тема: <span id="topic-display">[BERT]</span></p>
+
+    <div id="chat-window">
+        <!-- Сообщения будут добавляться сюда динамически через JS -->
+    </div>
+
+    <form id="chat-form" class="input-area">
+        <input type="" id="message-input" placeholder="Задайте вопрос по вашей теме..." autocomplete="off" autofocus>
+        <button type="submit" id="send-btn">➤ Отправить</button>
+    </form>
+    <div class="status" id="status-message">Готов к работе</div>
+
+    <script>
+        // DOM-элементы
+        const chatWindow = document.getElementById('chat-window');
+        const form = document.getElementById('chat-form');
+        const input = document.getElementById('message-input');
+        const sendBtn = document.getElementById('send-btn');
+        const statusEl = document.getElementById('status-message');
+
+        // Массив для хранения истории диалога в формате API
+        let conversationHistory = [];
+
+        /**
+         * Добавляет сообщение в окно чата
+         * @param {string} role - 'user' или 'bot'
+         * @param {string}  - текст сообщения
+         */
+        function addMessage(role, ) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${role}-message`;
+            
+            const senderName = role === 'user' ? 'Вы' : 'Бот';
+            msgDiv.innerHTML = `<strong>${senderName}</strong>${escapeHtml()}`;
+            
+            chatWindow.appendChild(msgDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight; // Автопрокрутка вниз
+        }
+
+        /**
+         * Простая защита от XSS (экранирование HTML-тегов)
+         */
+        function escapeHtml() {
+            const div = document.createElement('div');
+            div.Content = ;
+            return div.innerHTML;
+        }
+
+        /**
+         * Отправка запроса к API и обработка ответа
+         */
+        async function sendMessage(message) {
+            // Показываем индикатор загрузки
+            sendBtn.disabled = true;
+            statusEl.Content = '⏳ Модель думает...';
+
+            try {
+                // Формируем тело запроса
+                const payload = {
+                    message: message,
+                    history: conversationHistory
+                };
+
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || `Ошибка HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                // Отображаем ответ бота
+                addMessage('bot', data.response);
+
+                // Сохраняем пару вопрос-ответ в историю
+                conversationHistory.push({
+                    user: message,
+                    bot: data.response
+                });
+
+                // Ограничиваем размер истории (храним только последние 10 сообщений)
+                if (conversationHistory.length > 10) {
+                    conversationHistory.shift();
+                }
+
+                statusEl.Content = '✅ Готов';
+            } catch (error) {
+                console.error('Ошибка:', error);
+                addMessage('bot', `⚠️ Ошибка соединения: ${error.message}`);
+                statusEl.Content = '❌ Ошибка';
+            } finally {
+                sendBtn.disabled = false;
+                input.focus();
+            }
+        }
+
+        /**
+         * Обработчик отправки формы
+         */
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = input.value.trim();
+            
+            if (!message) return;
+
+            // Отображаем сообщение пользователя
+            addMessage('user', message);
+            
+            // Очищаем поле ввода
+            input.value = '';
+            
+            // Отправляем запрос к серверу
+            sendMessage(message);
+        });
+
+        // Устанавливаем тему из варианта (замените на свою)
+        document.getElementById('topic-display').Content = 'BERT';
+
+        // Приветственное сообщение при загрузке страницы
+        window.addEventListener('load', () => {
+            addMessage('bot', '👋 Здравствуйте! Я консультант по нейросетевым технологиям. Задайте вопрос по вашей теме.');
+        });
+    </script>
+</body>
+</html>

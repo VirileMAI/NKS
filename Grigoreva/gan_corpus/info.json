@@ -1,0 +1,19 @@
+{
+  "variant": 11,
+  "topic": "Специалист по аугментации данных",
+  "keywords": [
+    "data augmentation",
+    "synthetic data",
+    "GAN for augmentation",
+    "medical imaging",
+    "oversampling",
+    "image transforms"
+  ],
+  "model": "ai-forever/rugpt3small_based_on_gpt2",
+  "num_sources": 7,
+  "total_chars": 98352,
+  "num_chunks": 38,
+  "max_length": 512,
+  "chunk_size_words": 400,
+  "chunk_overlap_words": 50
+}
